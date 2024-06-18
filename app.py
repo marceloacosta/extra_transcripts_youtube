@@ -1,33 +1,3 @@
-# YouTube Transcript Fetcher
-
-This Python script fetches and saves transcripts for a list of YouTube video URLs. It uses the `youtube_transcript_api` to retrieve transcripts and `pytube` to fetch video titles.
-
-## Project Aim
-
-The aim of this project is to provide a simple and efficient way to download and save transcripts of multiple YouTube videos into a text file. This can be particularly useful for creating study materials, research, or content analysis.
-
-## Features
-
-- Fetches video titles using `pytube`.
-- Retrieves transcripts using `youtube_transcript_api`.
-- Formats and saves transcripts into a single text file.
-
-## Installation
-
-To use this script, you'll need to have Python installed along with the required packages. You can install the necessary packages using pip:
-
-```sh
-pip install youtube_transcript_api pytube
-```
-
-## Usage
-
-1. Prepare a list of YouTube URLs for which you want to fetch transcripts.
-2. Run the script with the URLs list to fetch and save the transcripts.
-
-### Example
-
-```python
 import sys
 from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound, TranscriptsDisabled
 from youtube_transcript_api.formatters import TextFormatter
@@ -66,6 +36,7 @@ def fetch_and_save_transcripts(urls, filename='transcripts.txt'):
                 print(f"Failed to download transcript for URL: {url}. Reason: {str(e)}", file=sys.stderr)
                 continue
 
+
 if __name__ == "__main__":
     urls = [
         "https://www.youtube.com/watch?v=iBa9EoEbb38&t=19s",
@@ -96,21 +67,8 @@ if __name__ == "__main__":
         "https://www.youtube.com/watch?v=MEJBnoTtsF4",
         "https://www.youtube.com/watch?v=3mEcdxYuD7M",
         "https://www.youtube.com/watch?v=7oKpFHPMjUU",
+
+    
     ]
 
     fetch_and_save_transcripts(urls)
-```
-
-## Error Handling
-
-The script includes error handling for various scenarios:
-
-- **Video Title Fetching Errors**: Prints an error message if the video title cannot be fetched.
-- **Transcript Disabled**: Skips the video and prints a message if transcripts are disabled.
-- **No Transcript Found**: Skips the video and prints a message if no transcript is available.
-- **General Errors**: Prints a message for any other errors encountered.
-
-## License
-
-This project is licensed under the MIT License.
-
